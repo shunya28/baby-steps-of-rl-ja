@@ -48,12 +48,16 @@ class Environment():
         # It means the agent has to reach the goal fast!
         self.default_reward = -0.04
 
+        # 確率的推移ってことだろうけど、この辺の説明が最初にないのは不親切だな…
         # Agent can move to a selected direction in move_prob.
         # It means the agent will move different direction
         # in (1 - move_prob).
         self.move_prob = move_prob
         self.reset()
 
+    # propertyは、メンバを隠蔽して（self._gridのように定義）、それを出力等する時にも使える
+    # この場合、代入したければsetterを使う
+    # 変数と同じくらい気軽に参照することになる。重い関数をpropertyにするのはNG
     @property
     def row_length(self):
         return len(self.grid)
@@ -62,6 +66,7 @@ class Environment():
     def column_length(self):
         return len(self.grid[0])
 
+    # enumの効果
     @property
     def actions(self):
         return [Action.UP, Action.DOWN,
