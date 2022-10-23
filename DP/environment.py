@@ -8,12 +8,14 @@ class State():
         self.row = row
         self.column = column
 
+    # strと違って、eval()に入れれば元のオブジェクトを取得できるのがrepr
     def __repr__(self):
         return "<State: [{}, {}]>".format(self.row, self.column)
 
     def clone(self):
         return State(self.row, self.column)
 
+    # よく分からないけど辞書（クラスの属性）を高速に検索するためのものらしい？
     def __hash__(self):
         return hash((self.row, self.column))
 
@@ -21,6 +23,8 @@ class State():
         return self.row == other.row and self.column == other.column
 
 
+# enumは列挙型。カードのスートのような識別子の集合。可読性が向上、変な誤操作をされないなど
+# 基本はメンバはUP=auto()等とした方がよい（数字の自動振り分け）
 class Action(Enum):
     UP = 1
     DOWN = -1
