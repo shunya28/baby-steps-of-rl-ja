@@ -94,6 +94,8 @@ class Environment():
             prob = 0
             if a == action:
                 prob = self.move_prob
+            # なるほど、行こうと思った方向に行ける確率はmove_prob、
+            # 行けずに左右にそれる確率はその残り、というように定義したいのね
             elif a != opposite_direction:
                 prob = (1 - self.move_prob) / 2
 
